@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "words",
+            "database": "${workspaceFolder:work_relevance}/src/words.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
