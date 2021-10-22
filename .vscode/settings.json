@@ -4,8 +4,9 @@
             "previewLimit": 50,
             "driver": "SQLite",
             "name": "words",
-            "database": "${workspaceFolder:work_relevance}/src/words.db"
+            "database": "${workspaceFolder:word_relevance}/src/words.db"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.pythonPath": "/usr/local/bin/python3"
 }

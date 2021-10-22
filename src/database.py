@@ -1,4 +1,7 @@
 import sqlite3
+from filename_parser import filenameParser
+
+filenames = filenameParser('/Users/momo/src/training/word_relevance/data')
 
 #conn = sqlite3.connect(':memory:')
 conn = sqlite3.connect('words.db')
@@ -6,12 +9,13 @@ conn = sqlite3.connect('words.db')
 # Create a cursor
 c = conn.cursor()
 
-arr_test = ["one", "two", "three", "four", "five"]
+print(len(filenames))
+sanitized_filenames = {x.replace('.txt','') for x in filenames}
 
-for i in arr_test:
-     c.execute('''ALTER TABLE words ADD COLUMN ''' + i + ''' INTEGER ''')
+for f in sanitized_filenames:
+    c.execute('''ALTER TABLE words ADD COLUMN ''' + f + ''' INTEGER ''')
 
-print(len(arr_test))
+
 
 '''# Create a Table TODO: Automate the table column population based on the documents inside the folder
 c.execute("""CREATE TABLE words (
