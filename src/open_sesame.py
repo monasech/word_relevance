@@ -1,3 +1,6 @@
+# To be deleted
+
+
 from filename_parser import filenameParser
 
 '''

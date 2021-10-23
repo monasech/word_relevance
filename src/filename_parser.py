@@ -1,8 +1,12 @@
 import os
 
 
-def filenameParser(dir_location):
-     files = os.listdir(dir_location)
+def filenameParser(path):
+
+     ''' 
+     Creates a list of the file names in a given directory
+     '''
+     files = os.listdir(path)
 
      filenames = []
 
