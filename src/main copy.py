@@ -2,7 +2,6 @@ import time
 from pandas.core.frame import DataFrame
 from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
-import numpy as np
 # TODO: Have the path as user input 
 path = '/home/mohammed/src/personal_learning/work_relevance/data/'
 column_names = ['words']
@@ -15,22 +14,17 @@ column_names = ['words']
 start_time = time.time()
 
 # Begin by creating an empty dataframe, then populate it with the unique word column
-
-
-
-
 df_init = pd.DataFrame()
 
 df_init['words'] = unique_word_finder(path) 
-print("--- %s seconds ---" % (time.time() - start_time))
+
 #Logs the success of the unique word finder function
-print(df_init)
-df_init.to_csv(r'/home/mohammed/src/personal_learning/work_relevance/export/dftocsv.csv', encoding='utf-8', header='true')
+print(df_init.info())
+
 df_counted = pd.DataFrame()
 
 df_counted = repeated_word_finder(df_init,path)
 
-print("--- %s seconds ---" % (time.time() - start_time))
 print(df_counted.info())
 
 df_counted.to_csv(r'/home/mohammed/src/personal_learning/work_relevance/export/dftocsv.csv', sep='\t', encoding='utf-8', header='true')
@@ -47,5 +41,4 @@ csv_file = open(path + '/unique_words.csv','w')
 writer = csv.writer(csv_file)
 
 writer.writerow(unique_words)
-
 '''
