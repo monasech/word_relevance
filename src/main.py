@@ -1,10 +1,8 @@
 import time
-
 from pandas.core.frame import DataFrame
-#from filename_parser import filenameParser
-from unique_word_finder import unique_word_finder
-from repeated_word_finder import repeated_word_finder
+from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
+# TODO: Have the path as user input 
 path = '/home/mohammed/src/personal_learning/work_relevance/data/'
 column_names = ['words']
 
