@@ -1,4 +1,8 @@
-from relevancy_calculator import query_breakup
+import sys
+sys.path.insert(0,'/home/mohammed/src/personal_learning/work_relevance/src/')
 
-def string_breakup():
-    assert query_breakup("Hi Y'all") == ["Hi","Y'all"]
+import relevancy_calculator as rc
+
+def test_increment():
+    assert rc.query_breakup("Hola!") == ["Hola"]
+
