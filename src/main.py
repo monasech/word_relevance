@@ -3,34 +3,37 @@ from pandas.core.frame import DataFrame
 from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
 import numpy as np
+from tkinter.filedialog import askdirectory
+
 # TODO: Have the path as user input 
-path = '/home/mohammed/src/personal_learning/work_relevance/data/'
+#path = '/home/mohammed/src/personal_learning/work_relevance/data/'
+path = askdirectory()
 column_names = ['words']
-
-
-#TODO: Remove the below code if the function works properly
-
-
 
 start_time = time.time()
 
+
+
 # Begin by creating an empty dataframe, then populate it with the unique word column
-
-
-
 
 df_init = pd.DataFrame()
 
 df_init['words'] = unique_word_finder(path) 
 print("--- %s seconds ---" % (time.time() - start_time))
-#Logs the success of the unique word finder function
+
+#Logs the success of the unique word finder function, and save the initial dataframe to a csv
 print(df_init)
-df_init.to_csv(r'/home/mohammed/src/personal_learning/work_relevance/export/dftocsv.csv', encoding='utf-8', header='true')
+csv_init_directory = askdirectory()
+df_init.to_csv(r'csv_init_directory', encoding='utf-8', header='true')
+
+# Create a new dataframe to hold the counters for each word.
 df_counted = pd.DataFrame()
 
 df_counted = repeated_word_finder(df_init,path)
 
 print("--- %s seconds ---" % (time.time() - start_time))
+
+
 print(df_counted.info())
 
 df_counted.to_csv(r'/home/mohammed/src/personal_learning/work_relevance/export/dftocsv.csv', sep='\t', encoding='utf-8', header='true')
