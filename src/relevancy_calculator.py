@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import re
 
-def query_breakup (string_query):
+def query_breakup(string_query):
         
-        query_list = (re.findall(r"([a-zA-Z\-]+)", string_query))
+        query_list = (re.findall(r"([a-zA-Z0-9\-]+)", string_query))
         
         print(query_list)
 

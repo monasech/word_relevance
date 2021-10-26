@@ -5,6 +5,8 @@ import numpy as np
 import re
 
 
+
+
 def filenameParser(path):
 
      ''' 
@@ -29,7 +31,9 @@ def unique_word_finder(path):
     unique_words = []
     for f in filenames:
         with open(path + '/' + f,'r') as file:
-            current_doc_all_words_ = (re.findall(r"([a-zA-Z\-]+)", file.read()))
+            #TODO: Consolidate all regex functions under one function
+            current_doc_all_words_ = (re.findall(r"([a-zA-Z0-9\-]+)", file.read()))
+            #current_doc_all_words_ = alphanumeric_parser(file)
             #print(len(current_doc_all_words_))
             #current_doc_unique_words_separate = re.split('\s|(?<!\d)[,.](?!\d)', current_doc_unique_words_conjoined)
             unique_words.extend(current_doc_all_words_)   
@@ -46,7 +50,7 @@ def repeated_word_finder(df,path):
         #print("The Documents name is: " + appended_filename )
         df[appended_filename] = 0
         with open(path + '/' + f,'r') as file:
-            current_doc_all_words = (re.findall(r"([a-zA-Z\-]+)", file.read()))
+            current_doc_all_words = (re.findall(r"([a-zA-Z0-9\-]+)", file.read()))
             #print(len(current_doc_all_words))
             for word in current_doc_all_words:
 

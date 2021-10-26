@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from tkinter.filedialog import askdirectory
 
-# TODO: Have the path as user input 
 #path = '/home/mohammed/src/personal_learning/work_relevance/data/'
 path = askdirectory()
 column_names = ['words']
