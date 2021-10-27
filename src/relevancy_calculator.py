@@ -38,12 +38,12 @@ def generality_discount(number_of_documents_with_word,number_of_documents):
     '''
     return math.log10(number_of_documents)/number_of_documents_with_word
     
-def word_importance(frequency_row,total_words_row):
+def word_importance(frequency_of_word,total_words_in_document):
         '''
         This function takes the row of document frequency and the row for total words
         and returns the word importance in a Pandas dataframe row.
         '''
-        return frequency_row/total_words_row
+        return frequency_of_word/total_words_in_document
 
 def word_relevance(word_importance, generality_discount):
         '''

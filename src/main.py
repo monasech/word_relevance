@@ -1,7 +1,7 @@
 from os import name
 import time
 from pandas.core.frame import DataFrame
-from relevancy_calculator import query_breakup, word_locator, generality_discount
+from relevancy_calculator import query_breakup, word_importance, word_locator, generality_discount, word_relevance
 from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
 import numpy as np
@@ -73,6 +73,7 @@ df_result = pd.DataFrame()
 df_result["word_query"] = word_list
 
 names_of_documents = filenameParser(path)
+
 for word in word_list:
     
     word_index = (df_result[df_result["word_query"] == word].index.values)
@@ -84,13 +85,22 @@ for word in word_list:
     number_of_documents = len(names_of_documents)
     #print(number_of_documents)
     #df_result["generality discount"] = 0
-    if number_of_documents_with_word == 0:
+
+    for name in names_of_documents:
+        if number_of_documents_with_word == 0:
     
-        gen_discount = 0
-        df_result.loc[word_index,"generality_discount"] = gen_discount
-    else: 
-        gen_discount = generality_discount(number_of_documents_with_word,number_of_documents)
-        df_result.loc[word_index,"generality_discount"] = gen_discount
+            gen_discount = 0
+            df_result.loc[word_index,"generality_discount"] = gen_discount
+            print(df_result)
+        else: 
+            gen_discount = generality_discount(number_of_documents_with_word,number_of_documents)
+            df_result.loc[word_index,"generality_discount"] = gen_discount
+            print(df_result)
+
+        df_result.loc[word_index,"word importance of"] = word_importance(df_result.loc(word_index,name).value(),df_result.loc[:,name].sum()) 
+        df_result.loc[word_index,"word relevance of"] = word_relevance(df_result.loc[word_index,"word importance of"].value(),df_result.loc[word_index,"generality_discount"].value()) 
+
+    
 
     print(df_result)
 
