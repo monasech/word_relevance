@@ -8,9 +8,9 @@ def query_breakup(string_query):
         This function will take the strings that will have the relevancy calculator functions 
         applied to them, and split them into individual words. 
         '''
-        query_list = re.split(r"\s+", string_query)
+        #query_list = re.split(r"\s+", string_query)
         
-               # query_list.append((re.findall(r"([a-zA-Z0-9\-]+)", word)))
+        query_list = ((re.findall(r"([a-zA-Z0-9\-]+)", string_query)))
         
         print(query_list)
 
@@ -25,7 +25,8 @@ def word_locator(df, word,column_name):
         '''
         word_index = (df[df[column_name] == word].index.values)
         print(word_index)
-        word_row = np.array(df.iloc[word_index,2:])
+        word_row = np.array(df.iloc[word_index,1:])
+
         print(word_row)
         documents_containg_word = list(zip(*np.where(word_row>0)))
 

@@ -56,6 +56,7 @@ def repeated_word_finder(df,path):
 
                 word_index = (df[df['words']==word].index.values)
                 df.loc[word_index,appended_filename] += 1
+    print(df)           
     return df
     
    
