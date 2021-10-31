@@ -9,6 +9,6 @@ The structure is as follows:
 
 in main.py the files are called in the following order to do the following tasks:
 1. filename_parser.py : Generates list of filenames in a directory
-2. unique_word_finder.py: Generates list of all unique words in the files
-3. repeated_word_finder.py: Appends the dataframe with all the instances found in each document
+2. find_unique_word.py: Generates list of all unique words in the files
+3. find_repeated_word.py: Appends the dataframe with all the instances found in each document
 4. relevancy_calculator.py: Performs the mentioned word relevancy calculation on the data frame, and outputs a new dataframe along with a csv file, and saves the data frame to an sqlite database for further reference or manipulation

@@ -1,7 +1,7 @@
 import sqlite3
-from filename_parser import filenameParser
+from filename_parser import parse_filename
 
-filenames = filenameParser('/Users/momo/src/training/word_relevance/data')
+filenames = parse_filename('/Users/momo/src/training/word_relevance/data')
 
 #conn = sqlite3.connect(':memory:')
 conn = sqlite3.connect('words.db')

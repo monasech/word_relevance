@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0,'/home/mohammed/src/personal_learning/work_relevance/src/')
 
 import pandas as pd
-from relevancy_calculator import query_to_string_list,word_locator
+from relevancy_calculator import query_to_string_list,locate_word
 
 
 def test_query_to_string_list_letters():
@@ -21,8 +21,8 @@ def test_query_to_string_list_numbers():
 def test_query_to_string_list_punctuation():
     assert query_to_string_list("!!!") == []
 
-def test_word_locator():
+def test_locate_word():
     test_dataframe = pd.read_csv('/home/mohammed/src/personal_learning/work_relevance/export/dft_counted_to_csv.csv')
-    wordy = word_locator(test_dataframe,'the','words')
+    wordy = locate_word(test_dataframe,'the','words')
     assert len(wordy) > 0
     #test_dataframe['words'] = un

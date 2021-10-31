@@ -7,7 +7,7 @@ import re
 
 
 
-def filenameParser(path):
+def parse_filename(path):
 
      ''' 
      Creates a list of the file names in a given directory
@@ -25,9 +25,9 @@ def filenameParser(path):
 
 
 
-def unique_word_finder(path):
+def find_unique_word(path):
     ''' This function will parse all text files in a given directory, and return all the unique words as a set'''
-    filenames = filenameParser(path)
+    filenames = parse_filename(path)
     unique_words = []
     for f in filenames:
         with open(path + '/' + f,'r') as file:
@@ -42,9 +42,9 @@ def unique_word_finder(path):
 
 
 
-def repeated_word_finder(df,path):
+def find_repeated_word(df,path):
     '''This function will parse the dataframe for the selected word, and increment the counter for its appearance in the document it was found in'''
-    filenames = filenameParser(path)
+    filenames = parse_filename(path)
     for f in filenames:
         appended_filename = str(f.replace('.txt',''))
         #print("The Documents name is: " + appended_filename )

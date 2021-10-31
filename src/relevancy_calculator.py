@@ -17,7 +17,7 @@ def query_to_string_list(string_query):
         return query_list
 
 
-def word_locator(df, word,column_name):
+def locate_word(df, word,column_name):
         '''
         This function takes as input a pandas dataframe containing a column of unique words
         and columns detailing the frequency a particular word appears in a document.

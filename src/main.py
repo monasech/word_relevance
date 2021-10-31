@@ -3,8 +3,8 @@ import time
 
 from numpy.core.numeric import NaN
 #from pandas.core.frame import DataFrame
-from relevancy_calculator import query_to_string_list, word_importance, word_locator, generality_discount, word_relevance
-from word_finder import filenameParser,unique_word_finder,repeated_word_finder
+from relevancy_calculator import query_to_string_list, word_importance, locate_word, generality_discount, word_relevance
+from word_finder import parse_filename,find_unique_word,find_repeated_word
 import pandas as pd
 import numpy as np
 #from tkinter.filedialog import askdirectory, askopenfilename
@@ -39,7 +39,7 @@ if verby == "y":
 
     df_init = pd.DataFrame()
 
-    df_init['words'] = unique_word_finder(data_path) 
+    df_init['words'] = find_unique_word(data_path) 
     print("--- %s seconds ---" % (time.time() - start_time))
 
     #Logs the success of the unique word finder function, and save the initial dataframe to a csv
@@ -50,7 +50,7 @@ if verby == "y":
     # Create a new dataframe to hold the counters for each word.
     df_counted = pd.DataFrame()
 
-    df_counted = repeated_word_finder(df_init,data_path)
+    df_counted = find_repeated_word(df_init,data_path)
 
     
     
@@ -70,7 +70,7 @@ if verby == "y":
 
 print("Begin phase two")
 input_string = input("Please input the string you would like to parse for")
-names_of_documents = filenameParser(data_path)
+names_of_documents = parse_filename(data_path)
 
 try: df_pass
 except NameError: df_pass = pd.read_csv(export_path_csv_2)
@@ -106,7 +106,7 @@ for word in word_list:
     print(word_index_pass)
     #ord_row = df_pass.iloc[word_index_pass,:]
 
-    number_of_documents_with_word = len(word_locator(df_pass,word,'words'))
+    number_of_documents_with_word = len(locate_word(df_pass,word,'words'))
     print(df_pass)
     
     print("number of documents with word = " + str(number_of_documents_with_word))
