@@ -3,7 +3,7 @@ import time
 
 from numpy.core.numeric import NaN
 #from pandas.core.frame import DataFrame
-from relevancy_calculator import query_breakup, word_importance, word_locator, generality_discount, word_relevance
+from relevancy_calculator import query_to_string_list, word_importance, word_locator, generality_discount, word_relevance
 from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
 import numpy as np
@@ -65,7 +65,7 @@ if verby == "y":
 
     df_pass = df_counted
     
-# Pass the query strings  to the query_breakup function, then receive a list of words. Iterate 
+# Pass the query strings  to the query_to_string_list function, then receive a list of words. Iterate 
 # through these words and get the word importance, generality discount, and word relevance of each
 
 print("Begin phase two")
@@ -78,7 +78,7 @@ else: pass
 
 
 
-word_list = query_breakup(input_string)
+word_list = query_to_string_list(input_string)
 
 print(" The list of words to be tested is :")
 print(word_list)
