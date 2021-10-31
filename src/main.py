@@ -8,7 +8,7 @@ from word_finder import filenameParser,unique_word_finder,repeated_word_finder
 import pandas as pd
 import numpy as np
 #from tkinter.filedialog import askdirectory, askopenfilename
-
+#TODO: Rewrite function names to be more pythonic (Verb first)
 verby = input("run from phase 1? (y/n)")
 mac_or_linux = input("mac or linux?")
 start_time = time.time()
@@ -69,7 +69,7 @@ if verby == "y":
 # through these words and get the word importance, generality discount, and word relevance of each
 
 print("Begin phase two")
-input_string = "the plastic container; see"
+input_string = input("Please input the string you would like to parse for")
 names_of_documents = filenameParser(data_path)
 
 try: df_pass
@@ -161,8 +161,12 @@ print("--- %s seconds ---" % (time.time() - start_time))
 
 
 
-
-
-
+# TODO: Prompts, configurations, gui file and directory selector.
+# TODO: Convert for loops to lambda functions
+# TODO: Improve readibility, use code blocks 
+# TODO: Use dictionary and list comprehensions
 
 # TODO: Create a log file for the program that details the time taken for each step
+
+# TODO: After finishing all todos, work on kedro pipeline and packaging. Explore writing a front-end interface and an API [FAST API].
+# TODO: 
