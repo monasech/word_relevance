@@ -3,7 +3,7 @@ import numpy as np
 import re
 import math
 
-def query_breakup(string_query):
+def breakup_query(string_query):
         '''
         This function will take the strings that will have the relevancy calculator functions 
         applied to them, and split them into individual words. 
@@ -17,7 +17,7 @@ def query_breakup(string_query):
         return query_list
 
 
-def word_locator(df, word,column_name):
+def locate_word(df, word,column_name):
         '''
         This function takes as input a pandas dataframe containing a column of unique words
         and columns detailing the frequency a particular word appears in a document.

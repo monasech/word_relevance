@@ -3,8 +3,8 @@ import time
 
 from numpy.core.numeric import NaN
 #from pandas.core.frame import DataFrame
-from relevancy_calculator import query_breakup, word_importance, word_locator, generality_discount, word_relevance
-from word_finder import filenameParser,unique_word_finder,repeated_word_finder
+from relevancy_calculator import breakup_query, word_importance, locate_word, generality_discount, word_relevance
+from word_finder import find_filename,find_unique_word,find_repeated_word
 import pandas as pd
 import numpy as np
 #from tkinter.filedialog import askdirectory, askopenfilename
@@ -39,7 +39,7 @@ if verby == "y":
 
     df_init = pd.DataFrame()
 
-    df_init['words'] = unique_word_finder(data_path) 
+    df_init['words'] = find_unique_word(data_path) 
     print("--- %s seconds ---" % (time.time() - start_time))
 
     #Logs the success of the unique word finder function, and save the initial dataframe to a csv
@@ -50,7 +50,7 @@ if verby == "y":
     # Create a new dataframe to hold the counters for each word.
     df_counted = pd.DataFrame()
 
-    df_counted = repeated_word_finder(df_init,data_path)
+    df_counted = find_repeated_word(df_init,data_path)
 
     
     
@@ -65,12 +65,12 @@ if verby == "y":
 
     df_pass = df_counted
     
-# Pass the query strings  to the query_breakup function, then receive a list of words. Iterate 
+# Pass the query strings  to the breakup_query function, then receive a list of words. Iterate 
 # through these words and get the word importance, generality discount, and word relevance of each
 
 print("Begin phase two")
 input_string = input("Please input the string you would like to parse for")
-names_of_documents = filenameParser(data_path)
+names_of_documents = find_filename(data_path)
 
 try: df_pass
 except NameError: df_pass = pd.read_csv(export_path_csv_2)
@@ -78,7 +78,7 @@ else: pass
 
 
 
-word_list = query_breakup(input_string)
+word_list = breakup_query(input_string)
 
 print(" The list of words to be tested is :")
 print(word_list)
@@ -106,7 +106,7 @@ for word in word_list:
     print(word_index_pass)
     #ord_row = df_pass.iloc[word_index_pass,:]
 
-    number_of_documents_with_word = len(word_locator(df_pass,word,'words'))
+    number_of_documents_with_word = len(locate_word(df_pass,word,'words'))
     print(df_pass)
     
     print("number of documents with word = " + str(number_of_documents_with_word))
@@ -169,4 +169,4 @@ print("--- %s seconds ---" % (time.time() - start_time))
 # TODO: Create a log file for the program that details the time taken for each step
 
 # TODO: After finishing all todos, work on kedro pipeline and packaging. Explore writing a front-end interface and an API [FAST API].
-# TODO: 
+# CalmCode (website) is a good resource 
