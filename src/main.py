@@ -1,15 +1,10 @@
 from os import name
 import time
 
-from numpy.core.numeric import NaN
+
 #from pandas.core.frame import DataFrame
-<<<<<<< HEAD
 from relevancy_calculator import breakup_query, word_importance, locate_word, generality_discount, word_relevance
 from word_finder import find_filename,find_unique_word,find_repeated_word
-=======
-from relevancy_calculator import query_to_string_list, word_importance, locate_word, generality_discount, word_relevance
-from word_finder import parse_filename,find_unique_word,find_repeated_word
->>>>>>> b0278680bdd15db3301a84052422610155de4a5d
 import pandas as pd
 import numpy as np
 #from tkinter.filedialog import askdirectory, askopenfilename
