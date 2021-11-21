@@ -65,20 +65,11 @@ if verby == "y":
 
     df_pass = df_counted
     
-<<<<<<< HEAD
-# Pass the query strings  to the breakup_query function, then receive a list of words. Iterate 
-=======
-# Pass the query strings  to the query_to_string_list function, then receive a list of words. Iterate 
->>>>>>> b0278680bdd15db3301a84052422610155de4a5d
-# through these words and get the word importance, generality discount, and word relevance of each
+
 
 print("Begin phase two")
 input_string = input("Please input the string you would like to parse for")
-<<<<<<< HEAD
 names_of_documents = find_filename(data_path)
-=======
-names_of_documents = parse_filename(data_path)
->>>>>>> b0278680bdd15db3301a84052422610155de4a5d
 
 try: df_pass
 except NameError: df_pass = pd.read_csv(export_path_csv_2)
@@ -86,11 +77,7 @@ else: pass
 
 
 
-<<<<<<< HEAD
 word_list = breakup_query(input_string)
-=======
-word_list = query_to_string_list(input_string)
->>>>>>> b0278680bdd15db3301a84052422610155de4a5d
 
 print(" The list of words to be tested is :")
 print(word_list)
