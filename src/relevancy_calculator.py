@@ -3,11 +3,7 @@ import numpy as np
 import re
 import math
 
-<<<<<<< HEAD
 def breakup_query(string_query):
-=======
-def query_to_string_list(string_query):
->>>>>>> b0278680bdd15db3301a84052422610155de4a5d
         '''
         This function will take the strings that will have the relevancy calculator functions 
         applied to them, and split them into individual words. 
