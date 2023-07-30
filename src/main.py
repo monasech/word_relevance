@@ -1,32 +1,36 @@
+import os
 from os import name
-import time
 
+import time
+import csv
 
 #from pandas.core.frame import DataFrame
 from relevancy_calculator import breakup_query, word_importance, locate_word, generality_discount, word_relevance
 from word_finder import find_filename,find_unique_word,find_repeated_word
 import pandas as pd
 import numpy as np
-#from tkinter.filedialog import askdirectory, askopenfilename
-#TODO: Rewrite function names to be more pythonic (Verb first)
-verby = input("run from phase 1? (y/n)")
-mac_or_linux = input("mac or linux?")
-start_time = time.time()
-if mac_or_linux == "mac":
+import tkinter 
+import tkinter.filedialog
 
-    data_path = '/Users/momo/src/training/word_relevance/data/'
-    export_path_csv_1 = '/Users/momo/src/training/word_relevance/export/dft_init_to_csv.csv'
-    export_path_csv_2 = '/Users/momo/src/training/word_relevance/export/dft_counted_to_csv.csv'
-    export_path_csv_3 = '/Users/momo/src/training/word_relevance/export/dft_result_to_csv.csv'
-else:
-    data_path = '/home/mohammed/src/personal_learning/work_relevance/data/'
-    export_path_csv_1 = '/home/mohammed/src/personal_learning/work_relevance/export/dft_init_to_csv.csv'
-    export_path_csv_2 = '/home/mohammed/src/personal_learning/work_relevance/export/dft_counted_to_csv.csv'
-    export_path_csv_3 = '/home/mohammed/src/personal_learning/work_relevance/export/dft_result_to_csv.csv'
-if verby == "y":
+
+
+
+
+#TODO: Rewrite function names to be more pythonic (Verb first)
+ask_to_rerun = input("run from phase 1? (y/n)")
+
+start_time = time.time()
+print ("Select the data location")
+data_path = tkinter.filedialog.askdirectory()
+
+print("Select where to output the CSV files")
+export_path_csv = tkinter.filedialog.askdirectory()
+
+
+if ask_to_rerun == "y":
 
     print("Running Phase 1")
-    #path = '/home/mohammed/src/personal_learning/work_relevance/data/'
+   
     
     
     column_names = ['words']
@@ -45,7 +49,8 @@ if verby == "y":
     #Logs the success of the unique word finder function, and save the initial dataframe to a csv
     print(df_init)
     #csv_init_directory = askopenfilename()
-    df_init.to_csv(export_path_csv_1, encoding='utf-8', header=True, index=False)
+    
+    df_init.to_csv(export_path_csv +"exported_csv_1.csv", encoding='utf-8', header=True, index=False)
 
     # Create a new dataframe to hold the counters for each word.
     df_counted = pd.DataFrame()
@@ -59,7 +64,7 @@ if verby == "y":
 
     print(df_counted)
 
-    df_counted.to_csv(export_path_csv_2,index=False)
+    df_counted.to_csv(export_path_csv +"exported_csv_2.csv",index=False)
 
     print("--- %s seconds ---" % (time.time() - start_time))
 
