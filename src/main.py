@@ -11,20 +11,19 @@ import pandas as pd
 import numpy as np
 import tkinter 
 import tkinter.filedialog
+from utils import ask_directory
+print("Hello World")
 
-
-
-
-
-#TODO: Rewrite function names to be more pythonic (Verb first)
 ask_to_rerun = input("run from phase 1? (y/n)")
 
 start_time = time.time()
 print ("Select the data location")
-data_path = tkinter.filedialog.askdirectory()
+data_path = ask_directory("Directory Selection","Please select the directory for your data.")
+
+print(data_path)
 
 print("Select where to output the CSV files")
-export_path_csv = tkinter.filedialog.askdirectory()
+export_path_csv = ask_directory("Directory Selection","Please select the directory to save the CSVs in")
 
 
 if ask_to_rerun == "y":
@@ -50,7 +49,7 @@ if ask_to_rerun == "y":
     print(df_init)
     #csv_init_directory = askopenfilename()
     
-    df_init.to_csv(export_path_csv +"exported_csv_1.csv", encoding='utf-8', header=True, index=False)
+    df_init.to_csv(export_path_csv +"\exported_csv_1.csv", encoding='utf-8', header=True, index=False)
 
     # Create a new dataframe to hold the counters for each word.
     df_counted = pd.DataFrame()
